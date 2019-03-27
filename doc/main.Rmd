@@ -1,7 +1,7 @@
 ---
 title: "Project 3 -  Main Script"
 date: "2019-3-27"
-author: "Guanren Wang and Fei Zheng"
+author: "Guanren Wang"
 output: html_notebook
 ---
 
@@ -314,6 +314,3 @@ It is also better than bilinear interpolation which uses the weighted average of
 
 Additionally, it is better than bicubic interpolation as well, which uses the weighted average of four translated pixel values for each output pixel value. MSE is 0.004927 and the PSNR is 24.1553. 
 
-  
-  
-## Our improved models
