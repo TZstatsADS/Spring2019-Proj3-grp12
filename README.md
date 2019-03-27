@@ -24,6 +24,8 @@ When use [SRGAN.ipynb](https://github.com/TZstatsADS/Spring2019-Proj3-grp12/blob
 
 *Fei Zheng* is responsble for all parts of srgan model except the validation.
 
+*Xi Yang* is responsble for README file and code editing, final test and reproduction of the model.
+
 Following [suggestions](http://nicercode.github.io/blog/2013-04-05-projects/) by [RICH FITZJOHN](http://nicercode.github.io/about/#Team) (@richfitz). This folder is orgarnized as follows.
 
 ```
