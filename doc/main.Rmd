@@ -246,7 +246,7 @@ if(run.parallel)
   source("../lib/superResolution_parallel.R") else
     source("../lib/superResolution.R")
 test_dir <- "../data/test_set/" # This will be modified for different data sets.
-test_LR_dir <- paste(train_dir, "LR/", sep="")
+test_LR_dir <- paste(test_dir, "LR/", sep="")
 test_HR_dir <- paste(test_dir, "HR/", sep="")
 
 if(run.test){
