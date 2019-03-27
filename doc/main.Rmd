@@ -193,11 +193,16 @@ tmp=gc() # release memory
 ### Visualize cross-validation results
 ```{r cv_vis}
 plot(model_values, err_cv[,1], xlab="Interaction Depth", ylab="CV Error",
-       main="Cross Validation Error", type="n", ylim=c(0, 0.005))
+       main="Cross Validation Error", type="n", ylim=c(0, 0.01))
 points(model_values, err_cv[,1], col="blue", pch=16)
 lines(model_values, err_cv[,1], col="blue")
 arrows(model_values, err_cv[,1]-err_cv[,2], model_values, err_cv[,1]+err_cv[,2], 
         length=0.1, angle=90, code=3)
+psnr<-10*log10(1/err_cv[,1])
+plot(model_values, psnr, xlab="Interaction Depth", ylab="PSNR",
+       main="PSNR", type="n")
+points(model_values, psnr, col="red", pch=16)
+lines(model_values, psnr, col="red")
 ```
 
 
