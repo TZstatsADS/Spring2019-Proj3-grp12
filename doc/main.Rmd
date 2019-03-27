@@ -5,7 +5,7 @@ author: "Guanren Wang"
 output: html_notebook
 ---
 
-This file organizes **all computational steps** for evaluating baseline image classification framework.
+This file organizes **all computational steps** for evaluating baseline image processing framework.
 For computational steps of improved model, please see python documents.
 
 The baseline model(GBM) is computed via Google Cloud VM with machine type: **n1-standard-16 (16 vCPUs, 60 GB memory)** and CPU platform: **Intel Broadwell**.
