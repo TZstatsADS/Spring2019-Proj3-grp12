@@ -35,7 +35,13 @@ train <- function(dat_train, label_train, par=NULL){
     featMat <- dat_train[, , c2]
     labMat <- label_train[, c1, c2]
     fit_gbm <- gbm.fit(x=featMat, y=labMat,
-                       n.trees=200,
+                       # here, to reduce computating workload, I choose 100 as number
+                       # of iterations. You can choose a larger number if your machine
+                       # has very high calculation speed
+                       n.trees=100,
+                       # for same reason, I set learning rate as 0.1. Although it may
+                       # make model less robust, concerning heavy computing task, I
+                       # compromised to reality
                        shrinkage = 0.1,
                        distribution="gaussian",
                        interaction.depth=depth, 
