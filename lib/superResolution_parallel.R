@@ -89,7 +89,6 @@ superResolution <- function(LR_dir, HR_dir, modelList){
     }}
     
     HRimg<-Image(featImg,colormode = Color)
-    writeImage(HRimg, file=pathHR,type = "png") # PNG is a lossless compression format
-    
+    writeImage(HRimg, file=pathHR,type = "jpeg") 
   }
 }
