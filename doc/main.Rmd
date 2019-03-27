@@ -302,7 +302,7 @@ We ran feature extraction by sampling 1000 points from the LR image pixels and t
 Optimal depth is 6 with cross-validation error 0.00266912
 
 Time for constructing training features= 92.81 s
-Time for training model= 379.08 s 
+Time for training model is around 3 hours 
 Time for super-resolution= 2717.55 s (1500 images)
 
 MSE is 0.002776163\
