@@ -14,7 +14,7 @@ Term: Spring 2019
 
 + Project summary: In this project, we create an mobile AI program that can enhance the resolution of blurry and low-resolution images. We 1) implement the current practice as the baseline model, 2) implement an improvement to the current practice, and 3) evaluate the performance gain of your proposed improvement against the baseline. We utilize tensorflow in python and 'gbm' library in R to implement super resolution of the images. We calculate the mse and psnr for evaluation purpose. Our model is better than the nerest-neighbor method and bilinear interpolation. Additionally, it is better than bicubic interpolation as well.  
 
-+ The mse and psnr for R model are 0.002776163 and 27.41872 respectively, and the mse and psnr for Python model are 0.0094 and 27.8961 respectively, obviously better than the baseline models.
++ The MSE and PSNR for R model are 0.002776163 and 27.41872 respectively, and the MSE and PSNR for Python model are 0.0094 (because R and Python use different scale for RGB, so the best way to compare two models is to use PSNR) and 27.8961 respectively, which is obviously better than the baseline models.
 	
 
 Following [suggestions](http://nicercode.github.io/blog/2013-04-05-projects/) by [RICH FITZJOHN](http://nicercode.github.io/about/#Team) (@richfitz). This folder is orgarnized as follows.
