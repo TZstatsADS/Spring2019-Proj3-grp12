@@ -28,7 +28,7 @@ When use [SRGAN.ipynb](https://github.com/TZstatsADS/Spring2019-Proj3-grp12/blob
 
 *Xi Yang* is responsble for README file and code editing, final test and reproduction of the model.
 
-*Yiyao Hu* is responsible for the validation part of srgan model and presentation.
+*Yiyao Hu* is responsible for study and assist of building srgan modle, the validation part of srgan model and presentation.
 
 Following [suggestions](http://nicercode.github.io/blog/2013-04-05-projects/) by [RICH FITZJOHN](http://nicercode.github.io/about/#Team) (@richfitz). This folder is orgarnized as follows.
 
