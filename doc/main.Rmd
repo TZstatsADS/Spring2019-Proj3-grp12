@@ -1,12 +1,23 @@
 ---
-title: "Project 3 -  Main Script"
+title: "Image Process: Super-Revolution of Low Revolution Images"
 date: "2019-3-27"
 author: "Guanren Wang"
 output: html_notebook
 ---
 
-This file organizes **all computational steps** for evaluating baseline image processing framework.
-For computational steps of improved model, please see python documents.
+
+## Project summary:  
++ In this project, we utilized two algorithms to enhance the resolution of blurry and low-resolution images. We:\
+1) Implemented the current practice as the baseline model by R\
+2) Implemented an improvement to the current practice\
+3) Evaluated the performance gain of your proposed improvement against the baseline. We utilized SRGAN by python as improved model.For baseline model we used `doParallel`,`gbm` and `EBImage` library in R to do super-resolution of the images. We calculated the MSE and PSNR for evaluation purpose. Our model is better than the nerest-neighbor method and bilinear interpolation. Additionally, it is better than bicubic interpolation as well.
++ The MSE and PSNR for baseline model are *0.0028* and *27.4187* respectively, and the MSE and PSNR for improved model are *0.0022* (because R and Python use different scale for RGB, the best way to compare two models is to use PSNR) and *27.8961* respectively, which is obviously better than the baseline models.
+
+This file organizes **all computational steps** for evaluating baseline image processing framework.\
+All major steps of my computation are computed by **self-defined functions**. If you want to see code of these functions, please click [here](https://github.com/Grandeurwang/Super_Revolution_of_low_revoltion_images/tree/master/lib)\
+For computational steps of improved model, please click [here](https://github.com/Grandeurwang/Super_Revolution_of_low_revoltion_images/tree/master/doc)\
+All the code is available on [GitHub](https://github.com/Grandeurwang/Super_Revolution_of_low_revoltion_images)
+
 
 The baseline model(GBM) is computed via Google Cloud VM with machine type: **n1-standard-16 (16 vCPUs, 60 GB memory)** and CPU platform: **Intel Broadwell**.
 In view of heavy computing workload, I recommend you use VM to reproduce.
@@ -232,10 +243,12 @@ tmp=gc()
 
 ## Step 5: Super-resolution for test images
 Feed the final training model with the completely holdout testing data. 
-+ `superResolution.R`
+
+`superResolution.R`:
+
   + Input: a path that points to the folder of low-resolution test images.
   + Input: a path that points to the folder (empty) of high-resolution test images.
-  + Input: an R object that contains tuned predictors.
+  + Input: an R object model with tuned parameters.
   + Output: construct high-resolution versions for each low-resolution test image.
 ```{r superresolution}
 # useually we use parallel computing to generate new images, but because of incompatibility of operating systems, superrevolution doesn't work, in this case we could do this without parallel computing. 
@@ -257,7 +270,7 @@ if(run.test){
 run.parallel=T
 ```
 
-## step 6: Summarize Running Time
+## Step 6: Summarize Running Time
 Prediction performance matters, so does the running times for constructing features and for training the model, especially when the computation resource is limited. 
 ```{r running_time}
 cat("Time for constructing training features=", tm_feature_train[3], "s \n")
@@ -265,7 +278,7 @@ cat("Time for training model=", tm_train[3], "s \n")
 cat("Time for super-resolution=", tm_test[3], "s \n")
 ```
 
-## step 7: Calculate MSE and PSNR
+## Step 7: Calculate MSE and PSNR
 ```{r accuracy}
 train_dir <- "../data/train_set/HR/"
 test_dir <- "../data/test_set/HR/"
@@ -276,7 +289,7 @@ cat("MSE is", mp[1],'\n')
 cat("PSNR is", mp[2])
 ```
 
-## step 8: Stop Parallel Computing 
+## Step 8: Stop Parallel Computing 
 ```{r stopParallel}
 if(run.parallel & .Platform$OS.type=="windows"){
   stopImplicitCluster()
@@ -285,9 +298,9 @@ if(run.parallel & .Platform$OS.type=="windows"){
 ```
 
 
-# Summary:
+## Conclusion:
 
-## Baseline Model
+### Steps:
 
 Our baseline model consists of four **steps**:\
 1. Preprocessing and Feature Extraction\
@@ -295,7 +308,7 @@ Our baseline model consists of four **steps**:\
 3. Making prediction using selected model\
 4. Evaluating prediction and running time of model
 
-### Results:
+### Results comparison:
 
 We ran feature extraction by sampling 1000 points from the LR image pixels and takin the 8 neighboring pixels for each point as features. 
 
@@ -305,12 +318,11 @@ Time for constructing training features= 92.81 s
 Time for training model is around 3 hours 
 Time for super-resolution= 2717.55 s (1500 images)
 
-MSE is 0.002776163\
-PSNR is 27.41872.
+**MSE** is 0.002669120\
+**PSNR** is 25.73632
 
-It is better than the nerest-neighbor method which uses the value of nearby translated pixel values for the output pixel values. MSE of this method is 0.004035 and PSNR is 25.3926.
+It is better than the **nerest-neighbor method** which uses the value of nearby translated pixel values for the output pixel values. MSE of this method is 0.004035 and PSNR is 25.3926.
 
-It is also better than bilinear interpolation which uses the weighted average of two translated pixel values for each output pixel value. The MSE is 0.003277 and PSNR is 26.3723.
+It is also better than **bilinear interpolation** which uses the weighted average of two translated pixel values for each output pixel value. The MSE is 0.003277 and PSNR is 26.3723.
 
-Additionally, it is better than bicubic interpolation as well, which uses the weighted average of four translated pixel values for each output pixel value. MSE is 0.004927 and the PSNR is 24.1553. 
-
+Additionally, it is better than **bicubic interpolation** as well, which uses the weighted average of four translated pixel values for each output pixel value. MSE is 0.004927 and the PSNR is 24.1553. 
